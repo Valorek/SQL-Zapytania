@@ -27,3 +27,15 @@ INSERT INTO actor(first_name,last_name) VALUES("Jason","Mammoa");
 INSERT INTO actor(actor_id, first_name, last_name) VALUES(203,"Ben", "Affleck")
 INSERT INTO actor(actor_id, first_name, last_name) VALUES(203,Pablo", "Nerodos")
   (wywali błąd bo nie można nadpisać aktora o takim samym id) 
+
+SELECT * FROM actor WHERE last_names="Affleck"
+SELECT * FROM actor WHERE actor_id=203
+
+UPDATE actor SET first_name='Bruce' WHERE actor_id=203
+UPDATE actor SET first_name='Gal',last_name="Gadot" WHERE actor_id=203
+
+V. DELETE - usuwanie rekordow z bazy danych 
+A. Usunięcie pojedyńczego rekordu 
+
+DELETE FROM actor WHERE actor_id=203
+DELETE FROM actor WHERE actor_id>200
