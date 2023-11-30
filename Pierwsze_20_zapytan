@@ -1,0 +1,101 @@
+0,1.SELECT * FROM `filmy` WHERE rok_produkcji = 1998 OR rok_produkcji = 1999; 
+2.SELECT tytul, cena FROM `filmy` WHERE cena > 9 ORDER BY cena;
+3.SELECT nazwisko FROM klienci WHERE imie='Jan';
+4.  
+5.SELECT nazwisko FROM aktorzy WHERE imie='Arnold' OR imie='Tom' OR imie='Jodie' ORDER BY nazwisko; 
+6.SELECT DISTINCT id_filmu FROM kopie WHERE czy_dostepna ='T' ORDER by id_filmu; 
+7.SELECT DISTINCT id_kopii FROM `wypozyczenia` WHERE data_wypozyczenia BETWEEN '2005-07-15' AND '2005-07-22' ORDER BY id_kopii; 
+8.SELECT id_kopii,data_zwrotu-data_wypozyczenia as czas FROM wypozyczenia WHERE (data_zwrotu - data_wypozyczenia) > 1;
+9.SELECT concat(left(imie,1), '.', ' ',nazwisko) as aktor FROM aktorzy;
+10.select tytul FROM filmy ORDER BY length(tytul);                             
+11.SELECT tytul,cena FROM filmy ORDER by rok_produkcji DESC LIMIT 3;
+12.SELECT imie,left(imie,1) as pierwsza,right(imie,1) as ostatnia FROM klienci;
+13.SELECT imie FROM klienci WHERE LEFT(imie,1)=RIGHT(imie,1);
+14.SELECT tytul FROM filmy WHERE substring(tutyl, length(tytul)- 1,1)='o' //sprawdzic
+15.SELECT concat(lower(imie),'.',lower(nazwisko),'@zsti.pl') as email FROM klienci;
+
+
+połączenia tabel{
+
+połączenie kartezjańskie - połączenie rekordów dwóch tabel na wszystkie możliwe sposoby 
+
+definicja: 
+
+select * from tabela1 cross join tabela2
+
+przyklad:
+
+SELECT * FROM filmy CROSS JOIN kopie; 
+
+połączenia neturlane - rekordy sa scalane jesli posiadaja jednakowe wartosci w jednakowo nazwanych kolumnach
+
+definicja:
+
+select * from tabela1 natural join tabela2 
+
+przykład:
+
+SELECT * FROM kopie NATURAL JOIN filmy; 
+
+połączenie w oparciu o warunek połączeniowy - rekordy są scalane jesli spełniają zadany warunek
+
+definicja:
+
+select * from tabela1 join tabela2 on warunek_polaczeniowy
+
+sami zadecydujemy ktore kolumny i w jaki sposob beda uczestniczyc w dopasowywaniu rekordow
+
+przyklad:
+
+SELECT * FROM `kopie` JOIN filmy ON kopie.id_filmu = filmy.id_filmu; 
+
+wyświetl wszystko z kopii, dodaj
+ 
+
+połączenie zwrotne - rekordy tabeli są łączone z rekodrami tej samej tabeli
+
+definicje:
+
+select * from tabela as t1 join tabela as t2 on warunek_polaczeniowy 
+
+przyklad:
+
+select * from aktorzy as a1 join aktorzy as a2 on a1.imie=a2.imie where a1.imie='Tom
+
+stworzyć definicje dla połączenia lewostronnego i prawostronnego do kazdej definicji stworze po 3 przykłady i do jednego przykladu napisze po polsku a na koncu wytlumacze na jezyk polski połączenia lewostronnego i prawostronnego
+
+ Połączenie lewostronne (LEFT JOIN) w SQL zwraca wszystkie rekordy z lewej tabeli (tabeli źródłowej) oraz pasujące rekordy z prawej tabeli (tabeli łączonej). Jeśli nie ma pasujących rekordów w prawej tabeli, wynik zawiera wartości NULL dla jej kolumn.
+
+
+Połączenie prawostronne (RIGHT JOIN) w SQL zwraca wszystkie rekordy z prawej tabeli (tabeli łączonej) oraz pasujące rekordy z lewej tabeli (tabeli źródłowej). Jeśli nie ma pasujących rekordów w lewej tabeli, wynik zawiera wartości NULL dla jej kolumn
+
+
+16.SELECT kopie.id_kopii, filmy.tytul FROM `filmy` JOIN kopie ON kopie.id_filmu = filmy.id_filmu ORDER BY id_kopii;
+17.SELECT DISTINCT filmy.tytul FROM `filmy` JOIN kopie ON kopie.id_filmu = filmy.id_filmu WHERE czy_dostepna='T';
+18.SELECT kopie.id_kopii FROM kopie JOIN filmy ON filmy.id_filmu = kopie.id_filmu WHERE rok_produkcji=1984;
+19.SELECT wypozyczenia.data_wypozyczenia,wypozyczenia.data_zwrotu,klienci.nazwisko FROM wypozyczenia JOIN klienci ON wypozyczenia.id_klienta = klienci.id_klienta;
+20.SELECT klienci.nazwisko, filmy.tytul FROM wypozyczenia JOIN klienci ON wypozyczenia.id_klienta = klienci.id_klienta JOIN kopie ON wypozyczenia.id_kopii = kopie.id_filmu JOIN filmy ON kopie.id_kopii = filmy.id_filmu;
+21.SELECT filmy.tytul, filmy.rok_produkcji FROM filmy join kopie ON kopie.id_filmu = filmy.id_filmu JOIN wypozyczenia ON wypozyczenia.id_kopii = kopie.id_kopii JOIN klienci ON klienci.id_klienta=wypozyczenia.id_klienta WHERE klienci.nazwisko = 'Kowalski';
+22.SELECT klienci.nazwisko FROM klienci JOIN wypozyczenia ON wypozyczenia.id_klienta = klienci.id_klienta ORDER BY wypozyczenia.data_wypozyczenia LIMIT 1; 
+23.SELECT aktorzy.nazwisko FROM filmy JOIN obsada ON obsada.id_filmu = filmy.id_filmu JOIN aktorzy ON aktorzy.id_aktora = obsada.id_aktora WHERE filmy.tytul="TERMINATOR"; 
+24.SELECT filmy.tytul FROM filmy JOIN obsada ON obsada.id_filmu = filmy.id_filmu JOIN aktorzy ON aktorzy.id_aktora = obsada.id_aktora WHERE aktorzy.nazwisko = 'De Niro'; 
+25. SELECT filmy.tytul FROM filmy JOIN kopie ON filmy.id_filmu = kopie.id_filmu JOIN wypozyczenia ON wypozyczenia.id_kopii = kopie.id_kopii ORDER BY wypozyczenia.data_zwrotu LIMIT 1; 
+26. SELECT DISTINCT klienci.nazwisko FROM klienci JOIN wypozyczenia ON wypozyczenia.id_klienta = klienci.id_klienta WHERE wypozyczenia.data_wypozyczenia BETWEEN "2005-07-15" AND "2005-07-20";
+27. SELECT DISTINCT filmy.tytul FROM filmy JOIN kopie ON kopie.id_filmu = filmy.id_filmu JOIN wypozyczenia ON wypozyczenia.id_kopii = kopie.id_kopii WHERE wypozyczenia.data_wypozyczenia BETWEEN '2005-07-15' AND '2005-07-25'; 
+28.SELECT klienci.imie,klienci.nazwisko,aktorzy.nazwisko FROM klienci JOIN aktorzy WHERE klienci.imie = aktorzy.imie;
+29.SELECT imie FROM klienci UNION SELECT imie FROM aktorzy ORDER BY imie ASC;
+30.SELECT filmy.tytul FROM filmy JOIN obsada ON obsada.id_filmu = filmy.id_filmu JOIN aktorzy ON aktorzy.id_aktora = obsada.id_aktora WHERE aktorzy.nazwisko = 'De Niro' INTERSECT SELECT filmy.tytul FROM filmy JOIN obsada ON obsada.id_filmu = filmy.id_filmu JOIN aktorzy ON aktorzy.id_aktora = obsada.id_aktora WHERE aktorzy.nazwisko = 'Reno';
+31. SELECT filmy.tytul FROM filmy 
+JOIN kopie ON kopie.id_filmu = filmy.id_filmu 
+JOIN wypozyczenia ON wypozyczenia.id_kopii = kopie.id_kopii 
+JOIN klienci ON klienci.id_klienta = wypozyczenia.id_klienta 
+WHERE klienci.nazwisko='Kowalski'
+INTERSECT SELECT filmy.tytul FROM filmy 
+JOIN kopie ON kopie.id_filmu = filmy.id_filmu 
+JOIN wypozyczenia ON wypozyczenia.id_kopii = kopie.id_kopii 
+JOIN klienci ON klienci.id_klienta = wypozyczenia.id_klienta 
+WHERE klienci.nazwisko='Nowak';
+32. SELECT filmy.tytul FROM filmy JOIN kopie ON kopie.id_filmu = filmy.id_filmu JOIN wypozyczenia ON wypozyczenia.id_kopii = kopie.id_kopii JOIN klienci ON klienci.id_klienta = wypozyczenia.id_klienta WHERE klienci.nazwisko='Kowalski' EXCEPT SELECT filmy.tytul FROM filmy JOIN kopie ON kopie.id_filmu = filmy.id_filmu JOIN wypozyczenia ON wypozyczenia.id_kopii = kopie.id_kopii JOIN klienci ON klienci.id_klienta = wypozyczenia.id_klienta WHERE klienci.nazwisko='Nowak';
+33. SELECT aktorzy.nazwisko FROM aktorzy JOIN obsada ON obsada.id_aktora = aktorzy.id_aktora JOIN filmy ON filmy.id_filmu = obsada.id_filmu	WHERE filmy.tytul = 'Terminator'
+EXCEPT
+SELECT aktorzy.nazwisko FROM aktorzy JOIN obsada ON obsada.id_aktora = aktorzy.id_aktora JOIN filmy ON filmy.id_filmu = obsada.id_filmu	WHERE filmy.tytul = 'Ghostbusters';
