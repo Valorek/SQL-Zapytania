@@ -1,0 +1,13 @@
+SELECT * FROM film
+ORDER BY length DESC;
+  (Zależność: Indeks zależy od danych w tabeli)
+  (sortowania po dlugosci w tabeli film)
+cena rosnaca a jak takie same to rosnaco wedlug tytulu
+SELECT * FROM `filmy` ORDER BY cena DESC, tytul ASC;
+SELECT * FROM filmy WHERE rok_produkcji = 1984 or rok_produkcji=1996;
+SELECT * FROM filmy WHERE rok_produkcji IN (1984,1996);
+SELECT * FROM `filmy` WHERE cena >9 AND rok_produkcji=2004;
+  (kolejnosc klauzul w poleceniach sql jest scisle okreslona najpierw select potem from potem where a na koncu order by)
+INSERT INTO actor VALUES(201,"Henry", "Cavill", "2023-02-22 18:56:30");
+DESCRIBE actor;
+INSERT INTO actor(first_name,last_name) VALUES("Jason","Mammoa");
