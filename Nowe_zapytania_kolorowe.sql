@@ -27,7 +27,7 @@ INSERT INTO actor(first_name,last_name) VALUES("Jason","Mammoa");
 
 INSERT INTO actor(actor_id, first_name, last_name) VALUES(203,"Ben", "Affleck")
 INSERT INTO actor(actor_id, first_name, last_name) VALUES(203,Pablo", "Nerodos")
-  (wywali błąd bo nie można nadpisać aktora o takim samym id) 
+  -- (wywali błąd bo nie można nadpisać aktora o takim samym id) 
 
 SELECT * FROM actor WHERE last_names="Affleck"
 SELECT * FROM actor WHERE actor_id=203
@@ -35,8 +35,8 @@ SELECT * FROM actor WHERE actor_id=203
 UPDATE actor SET first_name='Bruce' WHERE actor_id=203
 UPDATE actor SET first_name='Gal',last_name="Gadot" WHERE actor_id=203
 
-V. DELETE - usuwanie rekordow z bazy danych 
-A. Usunięcie pojedyńczego rekordu 
+-- V. DELETE - usuwanie rekordow z bazy danych 
+-- A. Usunięcie pojedyńczego rekordu 
 
 DELETE FROM actor WHERE actor_id=203
 DELETE FROM actor WHERE actor_id>200
@@ -44,3 +44,56 @@ DELETE FROM actor WHERE actor_id>200
 SELECT * FROM address WHERE adDress2 - NULL;
 
 SELECT * FROM address WHERE adDress2 IS NULL;
+
+SELECT * FROM address WHERE adDress2 IS NOT NULL;
+
+-- ZADANIE 1 
+SELECT * FROM customer WHERE store_id = 2 AND active = 0;
+
+-- ZADANIE 2
+SELECT * FROM film WHERE replacement_cost BETWEEN 25 AND 30 ORDER BY rental_rate LIMIT 100;
+
+
+-- ZADANIE 3
+-- a) 
+
+SELECT * FROM country WHERE country_id = 76;
+  
+-- b)
+
+UPDATE country SET country = 'Polska' WHERE country_id = 76;
+
+-- ZADANIE 4
+
+-- a)
+DESCRIBE city;
+
+-- b)
+
+SHOW COLUMNS FROM city;
+
+-- c)
+
+INSERT INTO city (city, country_id, last_update) VALUES ('Knurów', 1, CURRENT_TIMESTAMP);
+
+-- TWORZENIE BAZY DANYCH:
+  
+CREATE DATABASE liczone; 
+
+CREATE TABLE liczby(
+a INT,
+b INT,
+c FLOAT,
+d FLOAT,
+e DOUBLE,
+f DOUBLE,
+g DECIMAL(4,2),
+h DECIMAL(4,2))
+
+INSERT INTO liczby VALUES(1,2,1.1,2.2,1.1,2.2,1.1,2.2); 
+
+SELECT a+b FROM liczby;
+
+SELECT a+b, c+d, e+f, g+h, a+b < 3 , c+d=3.30, e+f=3.3, g+h=3.3 FROM liczby; 
+
+  
