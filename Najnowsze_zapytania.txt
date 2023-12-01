@@ -39,3 +39,7 @@ A. Usunięcie pojedyńczego rekordu
 
 DELETE FROM actor WHERE actor_id=203
 DELETE FROM actor WHERE actor_id>200
+
+SELECT * FROM address WHERE adDress2 - NULL;
+
+SELECT * FROM address WHERE adDress2 IS NULL;
