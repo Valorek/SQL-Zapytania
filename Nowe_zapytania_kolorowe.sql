@@ -96,4 +96,24 @@ SELECT a+b FROM liczby;
 
 SELECT a+b, c+d, e+f, g+h, a+b < 3 , c+d=3.30, e+f=3.3, g+h=3.3 FROM liczby; 
 
+s\za
+  
+CREATE DATABASE magazyn
+CREATE TABLE zapas(
+id SERIAL,
+nazwa VARCHAR(100),
+stan ENUM('wysoki','sredni','niski')
+
+)
+
+  INSERT INTO zapas (nazwa, stan) VALUES ('Mleko', 'wysoki')
+  INSERT INTO zapas (nazwa, stan) VALUES ('Ser', 'sredni')
+  INSERT INTO zapas (nazwa, stan) VALUES ('Jogurt', 'niski')
+  INSERT INTO zapas (nazwa, stan) VALUES ('Kefir', 'wysoki')
+  
+  INSERT INTO zapas (nazwa, stan) VALUES ('Kefir', 'wysoka')
+
+
+  
+
   
