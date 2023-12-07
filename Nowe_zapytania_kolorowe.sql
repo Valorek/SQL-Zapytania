@@ -124,4 +124,29 @@ CREATE TABLE samochody (
     description VARCHAR(255)
 );
 
+CREATE TABLE magazyn(
+id SERIAL,
+nazwa VARCHAR(100),
+alejka SET('biala','czerwona','zielona')
+)
+
+INSERT INTO magazyn(nazwa, alejka) VALUES ('Mleko', 'biala')
+INSERT INTO magazyn(nazwa, alejka) VALUES ('Ser', 'czerwona')
+INSERT INTO magazyn(nazwa, alejka) VALUES ('Jogurt', 'zielona')
+INSERT INTO magazyn(nazwa, alejka) VALUES ('Jogurt owocowy', 'zielona,biala')
+INSERT INTO magazyn(nazwa, alejka) VALUES ('Jogurt jagodowy', 'zielona,biala,czerwona')
   
+INSERT INTO magazyn(nazwa, alejka) VALUES ('Jogurt Sernikowy', 'zielona,biala,czerwony')
+  
+INSERT INTO magazyn(nazwa, alejka) VALUES ('Jogurt Sernikowy', '3')
+  
+INSERT INTO magazyn(nazwa, alejka) VALUES ('Jogurt Sernikowy', '6')
+
+
+  CREATE TABLE moja_tabela (
+    id INT PRIMARY KEY,
+    nazwa_tabeli VARCHAR(50) CHECK (nazwa_tabeli IN ('TabelaA', 'TabelaB', 'TabelaC')),
+    nazwa_kolumny VARCHAR(50) CHECK (nazwa_kolumny IN ('KolumnaX', 'KolumnaY', 'KolumnaZ')),
+    rekordy INT CHECK (rekordy IN (3, 6, 7)),
+    opis VARCHAR(255)
+);
