@@ -150,3 +150,55 @@ INSERT INTO magazyn(nazwa, alejka) VALUES ('Jogurt Sernikowy', '6')
     rekordy INT CHECK (rekordy IN (3, 6, 7)),
     opis VARCHAR(255)
 );
+
+
+CREATE DATABASE kursantki
+  DROP TABLE IF EXISTS nauka
+  DROP TABLE IF EXISTS kursantki
+  DROP TABLE IF EXISTS kurs
+
+
+  CREATE TABLE 'kursantki'(
+    'kursantki_id' INT AUTO_INCREMENT PRIMATY KEY,
+    'imie' varchar(15) NOT NULL,
+    'nazwisko' varchar(120) NOT NULL DEFAULT 'uczen'
+  )ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci;
+
+ CREATE TABLE 'kurs'(
+    'kurs_id' INT AUTO_INCREMENT PRIMATY KEY,
+    'nazwa' varchar(15) NOT NULL
+  )ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci; 
+
+  INSERT INTO kurs(nazwa) VALUES('PHP')
+  INSERT INTO kurs(nazwa) VALUES('C++')
+  INSERT INTO kurs(nazwa) VALUES('JAVA')
+  INSERT INTO kurs(nazwa) VALUES('JAVASCRIPT')
+  INSERT INTO kurs(nazwa) VALUES('C#')
+  INSERT INTO kurs(nazwa) VALUES('CSHARP')
+  INSERT INTO kurs(nazwa) VALUES('SQL')
+  INSERT INTO kurs(nazwa) VALUES('HTML')
+  INSERT INTO kurs(nazwa) VALUES('CSS')
+  INSERT INTO kurs(nazwa) VALUES('OTHER')
+
+  CREATE TABLE 'nauka'(
+  'nauka_id' OMT AUTO INCREMENT PRIMATY KEY,
+  'kursantki_id' INT,
+  'kurs_id' INT, 
+
+  FOREGEIN KEY(kursantki_id) REFERENCES kursantki(kursantki_id),
+  FOREGEIN KEY(kurs_id) REFERENCES kurs(kurs_id)
+  )ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci
+
+  INSERT INTO nauka (kursantki_id, kurs_id)  VALUES(1,7)
+  INSERT INTO nauka (kursantki_id, kurs_id)  VALUES(1,8)
+  INSERT INTO nauka (kursantki_id, kurs_id)  VALUES(2,10)
+  INSERT INTO nauka (kursantki_id, kurs_id)  VALUES(3,9)
+  INSERT INTO nauka (kursantki_id, kurs_id)  VALUES(4,9)
+  INSERT INTO nauka (kursantki_id, kurs_id)  VALUES(5,7)
+  INSERT INTO nauka (kursantki_id, kurs_id)  VALUES(6,9)
+  INSERT INTO nauka (kursantki_id, kurs_id)  VALUES(6,8)
+
+
+  ZADANIE DOMOWE:
+
+  Potrafić zbudować taką podobną tabelke jak wyżej zapisałem (coś w tym stylu) 
