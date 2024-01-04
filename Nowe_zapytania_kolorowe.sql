@@ -202,3 +202,19 @@ CREATE DATABASE kursantki
   ZADANIE DOMOWE:
 
   Potrafić zbudować taką podobną tabelke jak wyżej zapisałem (coś w tym stylu) 
+
+
+wyznacz srednie pensje pracownikow z podzialem na miasta a nastepnie wybierz te grupy (miasta) w ktorych srednia pensja przekroczyla sto:
+
+SELECT miasto,AVG(pensja) FROM pracownicy GROUP BY miasto HAVING AVG(pensja)>100;
+
+
+ZAPYTANIA NA CZAS ĆWICZENIE: 
+
+1.SELECT rok_produkcji, AVG(cena) FROM filmy GROUP BY rok_produkcji DESC HAVING AVG(cena);
+2.SELECT MAX(cena) FROM `filmy`;
+3.SELECT COUNT(tytul) FROM filmy WHERE rok_produkcji=1984;
+4.
+
+  
+
