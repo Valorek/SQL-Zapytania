@@ -214,7 +214,7 @@ ZAPYTANIA NA CZAS ĆWICZENIE:
 1.SELECT rok_produkcji, AVG(cena) FROM filmy GROUP BY rok_produkcji DESC HAVING AVG(cena);
 2.SELECT MAX(cena) FROM `filmy`;
 3.SELECT COUNT(tytul) FROM filmy WHERE rok_produkcji=1984;
-4.
-
+4.SELECT COUNT(kopie.id_kopii) AS liczba_kopii FROM filmy JOIN kopie ON filmy.id_filmu = kopie.id_filmu JOIN wypozyczenia ON kopie.id_kopii = wypozyczenia.id_kopii WHERE kopie.id_kopii = 7; 
+5.SELECT AVG(data_zwrotu-data_wypozyczenia) AS sredni_czas_wypozyczenia FROM wypozyczenia JOIN kopie ON wypozyczenia.id_kopii = kopie.id_kopii JOIN filmy ON kopie.id_filmu = filmy.id_filmu WHERE filmy.tytul = 'Ronin'; 
   
 
