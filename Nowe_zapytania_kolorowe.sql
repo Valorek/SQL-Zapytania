@@ -227,3 +227,11 @@ JOIN kopie ON wypozyczenia.id_kopii = kopie.id_kopii
 JOIN filmy ON kopie.id_filmu = filmy.id_filmu
 GROUP BY filmy.tytul;
 
+7.SELECT
+  klienci.imie,
+  klienci.nazwisko,
+  COUNT(wypozyczenia.id_klienta) AS liczba_wypozyczen
+FROM klienci
+LEFT JOIN wypozyczenia ON klienci.id_klienta = wypozyczenia.id_klienta
+GROUP BY klienci.id_klienta;
+
