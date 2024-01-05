@@ -216,5 +216,14 @@ ZAPYTANIA NA CZAS ĆWICZENIE:
 3.SELECT COUNT(tytul) FROM filmy WHERE rok_produkcji=1984;
 4.SELECT COUNT(kopie.id_kopii) AS liczba_kopii FROM filmy JOIN kopie ON filmy.id_filmu = kopie.id_filmu JOIN wypozyczenia ON kopie.id_kopii = wypozyczenia.id_kopii WHERE kopie.id_kopii = 7; 
 5.SELECT AVG(data_zwrotu-data_wypozyczenia) AS sredni_czas_wypozyczenia FROM wypozyczenia JOIN kopie ON wypozyczenia.id_kopii = kopie.id_kopii JOIN filmy ON kopie.id_filmu = filmy.id_filmu WHERE filmy.tytul = 'Ronin'; 
-  
+6.SELECT
+  filmy.tytul AS film,
+  ROUND(AVG(DATEDIFF(data_zwrotu, data_wypozyczenia)), 1) AS min,
+  ROUND(AVG(DATEDIFF(data_zwrotu, data_wypozyczenia)), 1) AS max,
+  ROUND(AVG(DATEDIFF(data_zwrotu, data_wypozyczenia)), 1) AS sre,
+  COUNT(*) AS razy
+FROM wypozyczenia
+JOIN kopie ON wypozyczenia.id_kopii = kopie.id_kopii
+JOIN filmy ON kopie.id_filmu = filmy.id_filmu
+GROUP BY filmy.tytul;
 
