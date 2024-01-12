@@ -243,3 +243,5 @@ VALUES (11, 'Komornik', 2005, 10.5);
 
 11.DELETE FROM filmy WHERE rok_produkcji = 2005; 
 
+12.UPDATE filmy SET cena = cena * 1.1 WHERE rok_produkcji < 1980; 
+
