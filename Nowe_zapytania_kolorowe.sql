@@ -235,3 +235,4 @@ FROM klienci
 LEFT JOIN wypozyczenia ON klienci.id_klienta = wypozyczenia.id_klienta
 GROUP BY klienci.id_klienta;
 
+8.SELECT aktorzy.nazwisko, COUNT(DISTINCT obsada.id_filmu) AS liczba_filmow FROM aktorzy JOIN obsada ON aktorzy.id_aktora = obsada.id_aktora GROUP BY aktorzy.id_aktora HAVING liczba_filmow > 1; 
