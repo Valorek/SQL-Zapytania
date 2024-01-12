@@ -238,3 +238,8 @@ GROUP BY klienci.id_klienta;
 8.SELECT aktorzy.nazwisko, COUNT(DISTINCT obsada.id_filmu) AS liczba_filmow FROM aktorzy JOIN obsada ON aktorzy.id_aktora = obsada.id_aktora GROUP BY aktorzy.id_aktora HAVING liczba_filmow > 1; 
 
 9.SELECT klienci.nazwisko, SUM(filmy.cena) AS KWOTA FROM klienci JOIN wypozyczenia ON klienci.id_klienta = wypozyczenia.id_klienta JOIN kopie ON wypozyczenia.id_kopii = kopie.id_kopii JOIN filmy ON kopie.id_filmu = filmy.id_filmu GROUP BY klienci.id_klienta; 
+10.INSERT INTO filmy (id_filmu, tytul, rok_produkcji, cena)
+VALUES (11, 'Komornik', 2005, 10.5);
+
+11.DELETE FROM filmy WHERE rok_produkcji = 2005; 
+
