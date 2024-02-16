@@ -247,7 +247,7 @@ VALUES (11, 'Komornik', 2005, 10.5);
 
 =============================================================
   TRANSAKCJE:
-
+(PO KAZDEJ LINII DAJEMY ŚREDNIK)
 
   1.
   
