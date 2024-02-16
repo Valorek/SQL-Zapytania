@@ -245,3 +245,36 @@ VALUES (11, 'Komornik', 2005, 10.5);
 
 12.UPDATE filmy SET cena = cena * 1.1 WHERE rok_produkcji < 1980; 
 
+=============================================================
+  TRANSAKCJE:
+
+
+  1.
+  
+  START TRANSACTION;
+
+INSERT INTO customer (store_id, first_name, last_name, email, address_id, active, create_date)
+VALUES (1, 'Anna', 'Nowak', 'anna.nowak@example.com', 2, 1, NOW());
+
+COMMIT;
+
+
+2. 
+
+  START TRANSACTION;
+
+INSERT INTO rental (rental_date, inventory_id, customer_id, staff_id, return_date)
+VALUES (NOW(), 2, 2, 2, NULL);
+
+COMMIT;
+
+
+3.
+  START TRANSACTION;
+
+UPDATE rental
+SET return_date = NOW()
+WHERE rental_id = 2;
+
+COMMIT;
+
