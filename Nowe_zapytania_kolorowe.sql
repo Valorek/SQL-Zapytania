@@ -282,3 +282,6 @@ COMMIT;
 TRIGERY OPERACJE NA KURSANTKACH (WCHODZIMY W KURSANTKE)
 
 ALTER TABLE kursantki ADD ostatni_zakup_id INT;
+
+
+CREATE TRIGGER nowyZapis AFTER INSERT ON zapisy FOR EACH ROW UPDATE kursantki SET ostatni_zakup_id = NEW.zapis_id WHERE kursantki.kursantki_id = NEW.kursantki_id;
