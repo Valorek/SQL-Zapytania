@@ -285,3 +285,16 @@ ALTER TABLE kursantki ADD ostatni_zakup_id INT;
 
 
 CREATE TRIGGER nowyZapis AFTER INSERT ON zapisy FOR EACH ROW UPDATE kursantki SET ostatni_zakup_id = NEW.zapis_id WHERE kursantki.kursantki_id = NEW.kursantki_id;
+
+ALTER TABLE zapisy ADD blokada INT DEFAULT 1;
+
+DELIMITER $$
+CREATE TRIGGER aktualizacjaSprzedazy BEFORE UPDATE ON zapisy FOR EACH ROW
+BEGIN
+    IF (SELECT blokada FROM zapisy WHERE zapis_id = NEW.zapis_id) > 0 THEN
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Blad: Nie mozna zaaktualizowac rekordu';
+    END IF;
+END $$
+DELIMITER ;
+
+  
