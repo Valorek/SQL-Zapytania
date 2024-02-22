@@ -298,3 +298,6 @@ END $$
 DELIMITER ;
 
   
+START TRANSACTION;
+	UPDATE zapisy SET kurs_id = 6 WHERE zapis_id = 11;
+COMMIT;
