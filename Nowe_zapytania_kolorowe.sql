@@ -301,3 +301,42 @@ DELIMITER ;
 START TRANSACTION;
 	UPDATE zapisy SET kurs_id = 6 WHERE zapis_id = 11;
 COMMIT;
+
+
+DELIMITER $$
+	CREATE TRIGGER nowaSprzedaz AFTER INSERT ON sprzedaz 
+	FOR EACH ROW 
+	BEGIN 
+		UPDATE kursantki set ostatni_zakup_id = new.id where kursantki_id = new.kursantki_id;
+		INSERT INTO zdarzenia(wydarzenia,uzytkownik,tablica, record_id)
+		VALUES ('insert','trigger','sprzedaz',new.id);
+	END $$
+DELIMITER;
+
+
+=====================================================
+
+
+CREATE TABLE memo (
+    memo_id INT AUTO_INCREMENT PRIMARY KEY,
+    tytuł VARCHAR(255),
+    wpis TEXT,
+    termin DATE
+);
+
+
+
+INSERT INTO memo (memo_id,tytuł,wpis,termin) VALUES (1,'Urodziny babci','Kupic kwiatki oraz torcik Wedlowski','23-03-09 13:47:00');
+
+ALTER TABLE memo
+ADD zrobione TINYINT DEFAULT 0;
+
+
+UPDATE memo
+SET zrobione = 1
+WHERE termin < CURDATE(); -- Ustawia wartość 1 dla zdarzeń, które miały miejsce w przeszłości
+
+UPDATE memo
+SET zrobione = 0
+WHERE termin >= CURDATE(); -- Pozostawia wartość 0 dla zdarzeń, które jeszcze się nie odbyły
+
