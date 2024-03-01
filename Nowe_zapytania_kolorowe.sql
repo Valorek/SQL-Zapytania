@@ -340,3 +340,16 @@ UPDATE memo
 SET zrobione = 0
 WHERE termin >= CURDATE(); -- Pozostawia wartość 0 dla zdarzeń, które jeszcze się nie odbyły
 
+
+
+CREATE TABLE sukcesy (
+    sukces_id INT AUTO_INCREMENT PRIMARY KEY,
+    memo_id INT,
+    tytuł VARCHAR(255),
+    wpis TEXT,
+    termin DATE,
+    FOREIGN KEY (memo_id) REFERENCES memo(memo_id)
+);
+
+Widoki to zapytania do bazy danych zapisywane pod jakas nazwa w postaci widoku.
+
