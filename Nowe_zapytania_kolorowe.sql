@@ -353,3 +353,7 @@ CREATE TABLE sukcesy (
 
 Widoki to zapytania do bazy danych zapisywane pod jakas nazwa w postaci widoku.
 
+
+SET @nr:=0;
+SELECT @nr:=@nr+1,PKB,Kraj,DlugoscZycia FROM world.pozycjapkb; 
+	
