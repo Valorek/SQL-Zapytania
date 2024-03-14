@@ -357,11 +357,23 @@ Widoki to zapytania do bazy danych zapisywane pod jakas nazwa w postaci widoku.
 SET @nr:=0;
 SELECT @nr:=@nr+1,PKB,Kraj,DlugoscZycia FROM world.pozycjapkb; 
 
-
+==================================================
+	
 DELIMITER $$
 CREATE PROCEDURE Kraj (IN kod VARCHAR(3))
 	BEGIN
 		SELECT CONCAT(Name, Continent, Region) FROM Country WHERE Code = kod;
 END $$
 DELIMITER;
-	
+
+
+=========================================================
+
+DELIMITER $$
+CREATE PROCEDURE Kraj (IN kod VARCHAR(3), OUT wyjscie TEXT)
+	BEGIN
+		SELECT CONCAT(Name, Continent, Region) FROM Country WHERE Code = kod;
+END $$
+DELIMITER;
+
+
