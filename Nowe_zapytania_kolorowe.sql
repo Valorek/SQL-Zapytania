@@ -377,3 +377,72 @@ END $$
 DELIMITER;
 
 
+
+5 zapytan join == podzapytania:
+
+1.
+JOIN:
+	SELECT actor.last_name, film.title
+FROM actor
+JOIN film_actor ON actor.actor_id = film_actor.actor_id
+JOIN film ON film_actor.film_id = film.film_id;
+
+PODZAPYTANIA:
+	SELECT actor.last_name, film.title
+FROM actor, film
+WHERE actor.actor_id IN (SELECT film_actor.actor_id FROM film_actor WHERE film_actor.film_id = film.film_id);
+
+2.
+JOIN:
+	SELECT film.title, customer.last_name
+FROM rental
+JOIN customer ON rental.customer_id = customer.customer_id
+JOIN inventory ON rental.inventory_id = inventory.inventory_id
+JOIN film ON inventory.film_id = film.film_id;
+
+PODZAPYTANIA:
+	SELECT film.title, customer.last_name
+FROM film, customer
+WHERE film.film_id IN (SELECT inventory.film_id FROM inventory WHERE inventory.inventory_id IN (SELECT rental.inventory_id FROM rental WHERE rental.customer_id = customer.customer_id));
+
+3.
+JOIN:
+	SELECT staff.last_name, store.store_id
+FROM staff
+JOIN store ON staff.store_id = store.store_id;
+
+PODZAPYTANIA:
+	SELECT staff.last_name, store.store_id
+FROM staff, store
+WHERE staff.store_id = store.store_id;
+
+4.
+JOIN:
+	SELECT film.title
+FROM rental
+JOIN inventory ON rental.inventory_id = inventory.inventory_id
+JOIN film ON inventory.film_id = film.film_id
+WHERE rental.return_date IS NULL;
+
+PODZAPYTANIA:
+	SELECT film.title
+FROM film, rental
+WHERE film.film_id IN (SELECT inventory.film_id FROM inventory WHERE inventory.inventory_id = rental.inventory_id AND rental.return_date IS NULL);
+
+5.
+JOIN:
+	SELECT film.title, SUM(payment.amount) AS total_payment
+FROM rental
+JOIN payment ON rental.rental_id = payment.rental_id
+JOIN inventory ON rental.inventory_id = inventory.inventory_id
+JOIN film ON inventory.film_id = film.film_id
+GROUP BY film.title;
+
+PODZAPYTANIA:
+	SELECT film.title, (SELECT SUM(payment.amount) FROM payment WHERE payment.rental_id = rental.rental_id) AS total_payment
+FROM film, rental
+WHERE rental.inventory_id IN (SELECT inventory.inventory_id FROM inventory WHERE inventory.film_id = film.film_id)
+GROUP BY film.title;
+
+
+	
