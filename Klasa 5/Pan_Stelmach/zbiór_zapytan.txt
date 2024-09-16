@@ -1,0 +1,27 @@
+1.	Wyświetl wszystkie informacje o książkach, posortowane alfabetycznie wg nazwiska autora.
+2.	Wyświetl wszystkie informacje o książkach (poza id), posortowane malejąco wg ceny.
+3.	Wyświetl wszystkie informacje o książkach. Zamiast standardowych nazw kolumn użyj aliasów wg klucza: idksiazki -> ID książki, imieautora -> Imię autora, itd.
+4.	Wyświetl wszystkie informacje o wysłanych zamówieniach.
+5.	Wyświetl wszystkie informacje o wysłanych zamówieniach z sierpnia i września 2021 roku.
+6.	Wyświetl wszystkie informacje o klientach z nazwiskiem Brodka.
+7.	Wyświetl wszystkie informacje o książkach, zawierających wyrażenie "php" lub „frontend” w tytule.
+8.	Wyświetl chronologicznie (od pierwszego do ostatniego) informacje o zamówieniach ze statusem „oczekiwanie”.
+9.	Wyświetl informacje o zamówieniach: imię i nazwisko klienta zamawiającego, id zamówienia oraz datę zamówienia.
+10.	Wyświetl informacje o zamówieniach: imię i nazwisko klienta zamawiającego, id zamówienia oraz tytuł zamówionej pozycji.
+11.	Wyświetl imiona, nazwiska i miasta osób, które zamówiły kiedykolwiek książkę o id 5 lub 7.
+12.	Wyświetl tytuły książek wraz z imieniem i nazwiskiem autora, które zamówiła osoba z Krakowa.
+13.	Wyświetl wszystkie informacje o zamówieniach dokonanych przez wszystkich klientów (imię i nazwisko osoby zamawiającej, id, data i status zamówienia, tytuł zamówionej książki).
+14.	Wyświetl wszystkie informacje o zamówieniach dokonanych przez klienta o nazwisku „Rutkowski” oraz „Brodka” (imię i nazwisko osoby zamawiającej, id, data i status zamówienia, tytuł zamówionej książki).
+15.	Wyświetl wszystkie informacje o zamówieniach dokonanych przez klienta o nazwisku „Jankowska” ułożone wg daty od najpóźniej dokonanych (imię i nazwisko osoby zamawiającej, id, data i status zamówienia, tytuł zamówionej książki).
+16.	Wyświetl średnią cenę książki.
+17.	Wyświetl informacje o ilości zamówień dokonanych przez klientów (imię, nazwisko, ilość).
+18.   Wyświetl tytuł oraz cenę najtańszej książki.
+19.	Wyświetl imię i nazwisko klienta, który dokonał tylko jednego zamówienia.
+20.	Wyświetl imię i nazwisko klienta, który min. dwóch zamowien.
+21.   Wyświetl imię i nazwisko klienta, który nigdy nie dokonał zamówienia.
+22.   Wyświetl imiona, nazwiska i miasta osób, które zamówiły kiedykolwiek książkę o id 5 oraz 7.
+23.   Zaukualizuj cenę wszystkich książek z PHP o 15%.
+24.   Zakutualizuj status zamówień na "wysłano" dla wszystkich zamówień z 2021 roku.
+25.   Dodaj do tabeli klienci komumnnę "e-mail".
+26.   Dodaj dwóch nowych klientów do bazy uzupełniając wszystkie pola. 
+27.   Usuń z bazy Andrzeja D.
