@@ -1,0 +1,10 @@
+1. Ile produktów jest w każdej z kategorii
+2. Ile produktów dostarcza każdy z dostawców
+3. Ile razy dokonał zamówienia każdy klient
+4. Ile razy dokonał zamówienia każdy klient, uwzględniając tylko tych, którzy zamówienie realizowali mniej niż 30 razy
+5. Ile razy dokonał zamówienia każdy klient w grudniu 2012
+6. Kwota (suma) zamówień poszeczególnych klientów
+7. Kwota (suma) zamówień poszczególnych klientów z września 2012, posortowana wg wartości
+8. Kwota (suma) zamówień poszczególnych klientów, uwzględniając tylko sumę powyżej 200k
+9. Suma sprzedaży wg produktów
+10. Średnia wartość zamówień we wrześniu 2012
