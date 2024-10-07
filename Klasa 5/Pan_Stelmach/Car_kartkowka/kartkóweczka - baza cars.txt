@@ -1,0 +1,13 @@
+1. Wyœwietl datê wypo¿yczenia, imiê i nazwisko klienta oraz markê i model samochodu. Dane posortów alfabetycznie wg nazwisk.
+
+2. Wyœwietl imiona i nazwiska dwóch pierwszych pracowników z listy.
+
+3. Wyœwietl imiona i nazwiska trzech pracowników z najni¿sz¹ pensj¹.
+
+4. Dla ka¿dego klienta wyœwietl imiê i nazwisko oraz ³¹czn¹ iloœæ wypo¿yczeñ.
+
+5. Wyœwietl imiê i nazwisko pracownika z najwy¿sz¹ pensj¹.
+
+6. Wyœwietl katalog aut (marka,model,rok produkcji) posortowane malej¹co wg liczny wypo¿yczeñ.
+
+7. Wyœwietl imiona i nazwiska klientów, którzy nigdy nie wypo¿yczyli auta.
