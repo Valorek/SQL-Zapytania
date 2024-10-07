@@ -1,0 +1,99 @@
+SELECT
+    klienci.imie AS 'imie',
+    klienci.nazwisko AS 'nazwisko',
+    'klient' AS 'kto jest kim'
+FROM
+    klienci
+UNION
+SELECT
+    pracownicy.imie_p,
+    pracownicy.nazwisko_p,
+    'pracownik'
+FROM
+    pracownicy;
+
+=============================================================================
+
+UNION - eliminuje duplikaty (czesc wspolna obu zbiorów)
+
+UNION ALL -nie eliminuje duplikatów (czesc wspolna obu zbiorów) 
+
+=============================================================================
+
+SELECT
+    klienci.id_klienta AS 'id',
+    klienci.nazwisko_klienta AS 'nazwisko',
+    'klient' AS 'kto jest kto'
+FROM
+    klienci
+JOIN wypozyczenia ON wypozyczenia.id_klienta = klienci.id_klienta
+JOIN dane_wypozyczen ON dane_wypozyczen.id_wypozyczenia = wypozyczenia.id_wypozyczenia
+JOIN samochody ON samochody.id_samochodu = dane_wypozyczen.id_samochodu
+WHERE
+    samochody.marka = "bmw"
+UNION
+SELECT
+    pracownicy.id_pracownika,
+    pracownicy.nazwisko_pracownika,
+    'pracownik'
+FROM
+    pracownicy
+JOIN wypozyczenia ON wypozyczenia.id_pracownika = pracownicy.id_pracownika
+JOIN dane_wypozyczen ON dane_wypozyczen.id_wypozyczenia = wypozyczenia.id_wypozyczenia
+JOIN samochody ON samochody.id_samochodu = dane_wypozyczen.id_samochodu
+WHERE
+    samochody.marka = "bmw";
+
+
+
+======================================================================================================================================================
+
+SELECT klienci.nazwisko_klienta,klienci.miasto_klienta FROM klienci WHERE klienci.miasto_klienta="Gliwice" or klienci.miasto_klienta="Katowic";
+
+LUB MOZNA TEZ TAK:
+
+SELECT
+    klienci.nazwisko_klienta,
+    klienci.miasto_klienta
+FROM
+    klienci
+WHERE
+    klienci.miasto_klienta = "Gliwice"
+UNION
+SELECT
+    klienci.nazwisko_klienta,
+    klienci.miasto_klienta
+FROM
+    klienci
+WHERE
+    klienci.miasto_klienta = "Katowice";
+
+
+==================================================================================================================
+
+SELECT
+    klienci.id_klienta AS 'id',
+    klienci.nazwisko_klienta AS 'nazwisko'
+FROM
+    klienci
+JOIN wypozyczenia ON wypozyczenia.id_klienta = klienci.id_klienta
+JOIN dane_wypozyczen ON dane_wypozyczen.id_wypozyczenia = wypozyczenia.id_wypozyczenia
+JOIN samochody ON samochody.id_samochodu = dane_wypozyczen.id_samochodu
+WHERE
+    samochody.marka = "opel" AND samochody.model = 'corsa' AND wypozyczenia.data_wyp BETWEEN '2022-12-01' AND '2022-12-31'
+INTERSECT
+SELECT
+    klienci.id_klienta AS 'id',
+    klienci.nazwisko_klienta AS 'nazwisko'
+FROM
+    klienci
+JOIN wypozyczenia ON wypozyczenia.id_klienta = klienci.id_klienta
+JOIN dane_wypozyczen ON dane_wypozyczen.id_wypozyczenia = wypozyczenia.id_wypozyczenia
+JOIN samochody ON samochody.id_samochodu = dane_wypozyczen.id_samochodu
+WHERE
+    samochody.marka = "bmw" AND samochody.model = '3' AND wypozyczenia.data_wyp BETWEEN '2022-12-01' AND '2022-12-31';
+
+
+
+
+
