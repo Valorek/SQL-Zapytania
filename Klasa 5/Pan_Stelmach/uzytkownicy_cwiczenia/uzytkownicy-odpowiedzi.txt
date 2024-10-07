@@ -1,0 +1,67 @@
+1.cd c:/xampp/mysql/bin
+mysql -u root -p
+
+wylogowanie: quit
+
+2.
+create user 'super5ei'@localhost' identified by 'qwerty';
+
+show grants;
+
+na pałe kopiujesz wynik i masz zapytanie
+
+GRANT ALL PRIVILEGES ON *.* TO `super5ei`@`localhost` WITH GRANT OPTION
+
+3. 
+mysql -u super5ei -p 
+
+4.
+create database zwierzaki
+use zwierzaki 
+5
+	Create table kotki (idkotek int auto_increment primary key, 
+				kotkirasa varchar(45),
+				kotkikolor varchar (45));
+	Create table pieski (idpieski int auto_increment primary key, 
+				pieskirasa varchar(45),
+				pieskikolor varchar (45));
+	Create table swinki (idswinki int auto_increment primary key, 
+				swinkirasa varchar(45),
+				swinkikolor varchar (45));
+
+6.
+Insert into kotki values ('','mustafa','rudy');
+	Insert into kotki values ('','rafasa','biały');
+	Insert into kotki values ('','mustafa','zielony');
+	Insert into pieski values ('','kundel','wielobarwny');
+	Insert into pieski values ('','jamnik','czarny');
+	Insert into pieski values ('','bernardyn','brazowy');
+	Insert into swinki values ('','rasa1','rozowy');
+	Insert into swinki values ('','rasa2','filetowy');
+	Insert into swinki values ('','rasa3','niebieski');
+
+7.
+CREATE USER 'admin_zwierzaki5ei'@'localhost' identified by 'qwerty';
+grant all PRIVILEGES on zwierzaki.* to 'admin_zwierzaki'@'localhost';
+
+CREATE USER 'admin_kotki5ei'@'localhost' identified by 'qwerty';
+grant all PRIVILEGES on zwierzaki.kotki to 'admin_kotki5ei'@'localhost';
+
+CREATE USER 'admin_pieski5ei'@'localhost' identified by 'qwerty';
+grant all PRIVILEGES on zwierzaki.pieski to 'admin_pieski5ei'@'localhost';
+
+
+CREATE USER 'admin_swinki5ei'@'localhost' identified by 'qwerty';
+grant all PRIVILEGES on zwierzaki.pieski to 'admin_swinki5ei'@'localhost';
+
+CREATE USER 'maniek5ei'@'localhost' identified by 'qwerty';
+grant select on zwierzaki.kotki to 'maniek5ei'@'localhost';
+
+CREATE USER 'jozek5ei'@'localhost' identified by 'qwerty';
+grant insert,delete on zwierzaki.pieski to 'jozek5ei'@'localhost';
+
+
+CREATE USER 'bronek5ei'@'localhost' identified by 'qwerty';
+ grant update,create on zwierzaki.* to 'bronek5ei'@'localhost';
+ grant select on zwierzaki.kotki to 'bronek5ei'@'localhost';
+ grant select on zwierzaki.swinki to 'bronek5ei'@'localhost';
