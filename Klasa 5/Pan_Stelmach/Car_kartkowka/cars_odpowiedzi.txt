@@ -1,0 +1,7 @@
+1.SELECT klienci.imie,klienci.nazwisko, samochody.model, samochody.marka,wypozyczenia.data_wyp FROM klienci JOIN wypozyczenia ON klienci.id_klienta=wypozyczenia.id_klienta JOIN samochody ON samochody.id_samochodu=wypozyczenia.id_samochodu GROUP BY klienci.nazwisko; 
+2.SELECT pracownicy.imie_p,pracownicy.nazwisko_p FROM pracownicy LIMIT 2; 
+3.SELECT imie_p,nazwisko_p FROM pracownicy ORDER BY pensja ASC LIMIT 3;
+4.SELECT klienci.imie, klienci.nazwisko,COUNT(wypozyczenia.id_wypozyczenia) FROM klienci JOIN wypozyczenia ON klienci.id_klienta=wypozyczenia.id_klienta GROUP BY klienci.imie; 
+5.SELECT pracownicy.imie_p,pracownicy.nazwisko_p FROM pracownicy WHERE pracownicy.pensja=(SELECT MAX(pracownicy.pensja) FROM pracownicy); 
+6.SELECT samochody.marka, samochody.model, samochody.data_prod, COUNT(wypozyczenia.id_wypozyczenia) FROM samochody JOIN wypozyczenia ON samochody.id_samochodu=wypozyczenia.id_samochodu GROUP BY samochody.marka ORDER BY COUNT(wypozyczenia.id_wypozyczenia) DESC; 
+7.SELECT klienci.imie,klienci.nazwisko FROM klienci JOIN wypozyczenia ON klienci.id_klienta=wypozyczenia.id_klienta GROUP BY klienci.imie HAVING COUNT(wypozyczenia.id_wypozyczenia)=0;
