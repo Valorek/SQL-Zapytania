@@ -1,0 +1,84 @@
+SELECT pracownicy.ImiePracownika,pracownicy.NazwiskoPracownika FROM pracownicy JOIN zamowienia ON pracownicy.IDPracownika = zamowienia.IDPracownika JOIN dane_zamowien ON dane_zamowien.NumerZamowienia = zamowienia.NumerZamowienia JOIN produkty ON dane_zamowien.NumerProduktu=produkty.NumerProduktu WHERE MONTH(zamowienia.DataZamowienia)=10 AND YEAR(zamowienia.DataZamowienia)=2012 AND produkty.NumerProduktu IN (10,25,26) GROUP BY pracownicy.ImiePracownika,pracownicy.NazwiskoPracownika;
+
+===============================
+
+SELECT DISTINCT pracownicy.ImiePracownika,pracownicy.NazwiskoPracownika FROM pracownicy JOIN zamowienia ON pracownicy.IDPracownika = zamowienia.IDPracownika JOIN dane_zamowien ON dane_zamowien.NumerZamowienia = zamowienia.NumerZamowienia JOIN produkty ON dane_zamowien.NumerProduktu=produkty.NumerProduktu WHERE MONTH(zamowienia.DataZamowienia)=10 AND YEAR(zamowienia.DataZamowienia)=2012 AND produkty.NazwaProduktu LIKE "%kask%";
+
+=========================
+
+SELECT DISTINCT dostawcy.NazwaDostawcy FROM dostawcy JOIN dostawcy_produktow ON dostawcy.IDDostawcy=dostawcy_produktow.IDDostawcy JOIN produkty ON dostawcy_produktow.NumerProduktu=produkty.NumerProduktu JOIN kategorie ON produkty.IDKategorii=kategorie.IDKategorii WHERE kategorie.OpisKategorii="Akcesoria"; 
+
+
+
+==========================================
+
+SELECT DISTINCT
+    pracownicy.ImiePracownika,
+    pracownicy.NazwiskoPracownika,
+    klienci.ImieKlienta,
+    klienci.NazwiskoKlienta
+FROM
+    pracownicy
+JOIN zamowienia ON pracownicy.IDPracownika = zamowienia.IDPracownika
+JOIN klienci ON zamowienia.IDKlienta = klienci.IDKlienta
+JOIN dane_zamowien ON zamowienia.NumerZamowienia = dane_zamowien.NumerZamowienia
+JOIN produkty ON dane_zamowien.NumerProduktu = produkty.NumerProduktu WHERE produkty.NazwaProduktu LIKE "%Zapięcie%Nikoma%" OR "%Hamulec%Shinoman%105%SC" OR "%Zegarek%sportowy%Viscount%" AND YEAR(zamowienia.DataZamowienia)=2012 AND MONTH(zamowienia.DataZamowienia)=12;
+
+====================================
+
+SELECT DISTINCT
+    zamowienia.NumerZamowienia,
+    zamowienia.DataZamowienia,
+    pracownicy.ImiePracownika,
+    pracownicy.NazwiskoPracownika,
+    klienci.ImieKlienta,
+    klienci.NazwiskoKlienta
+    FROM zamowienia
+JOIN pracownicy ON pracownicy.IDPracownika = zamowienia.IDPracownika
+JOIN klienci ON zamowienia.IDKlienta = klienci.IDKlienta
+JOIN dane_zamowien ON dane_zamowien.NumerZamowienia = zamowienia.NumerZamowienia
+JOIN produkty ON dane_zamowien.NumerProduktu = produkty.NumerProduktu
+JOIN dostawcy_produktow ON produkty.NumerProduktu = dostawcy_produktow.NumerProduktu
+JOIN dostawcy ON dostawcy_produktow.IDDostawcy = dostawcy.IDDostawcy
+WHERE
+    dostawcy.StanSiedzDostawcy = "WA";
+
+===================================================
+
+SELECT produkty.NazwaProduktu FROM produkty LEFT JOIN dane_zamowien ON produkty.NumerProduktu=dane_zamowien.NumerProduktu WHERE dane_zamowien.ZamowionaIlosc IS NULL; 
+
+
+==============================================
+
+
+CREATE VIEW dane_osobowe_ws AS(
+    SELECT
+        CONCAT(
+            pracownicy.ImiePracownika,
+            " ",
+            pracownicy.NazwiskoPracownika
+        ) AS "Nazwa",
+        pracownicy.MiastoPracownika,
+        "Pracownik" AS "Kto"
+    FROM
+        pracownicy
+    UNION
+SELECT
+    CONCAT(
+        klienci.ImieKlienta,
+        " ",
+        klienci.NazwiskoKlienta
+    ),
+    klienci.MiastoKlienta,
+    "klienci"
+FROM
+    klienci
+UNION
+SELECT
+    dostawcy.NazwaDostawcy,
+    dostawcy.MiastoDostawcy,
+    "dostawcy"
+FROM
+    dostawcy
+);
+
