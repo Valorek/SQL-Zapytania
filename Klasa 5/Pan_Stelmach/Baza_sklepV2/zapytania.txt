@@ -1,0 +1,8 @@
+1. Wybierz imiona i nazwiska pracowników, którzy obłsugiwali w paździrniku 2012 roku zamówienia na kaski.
+2. Wybierz nazwy dostawców, którzy dostarczają produkty z kategorii akcesoria.
+3. Wybierz imiona i nazwiska pracowników i klientów, którzy dokonywali i obsługiwali zamówienia z grudnia 2012 roku, w ramach których zamawiano Zapięcie Nikoma, Hamulce Shinoman 105 SC lub Zegarek sportowy Viscount.
+4. Wybierz numery i daty zamówień, imiona i nazwiska pracowników oraz klientów, ktorzy zakupili produkty dostarczane przez dostawców ze stanu Waszyngton.
+5. Wybierz nazwy produktów, które nigdy nie zostały zamówione.  
+6. Utwórz widok "dane_osobowe_ws" zawierający: nazwę (w przypadku klientów i pracowników imię i nazwisko), adres, miasto, numer telefonu, wraz z informacją czy dany podmiot jest klientem, pracownikiem, czy dostawcą.
+7. Wyświetl numery zamówień, w ramach których zakupiono zarówno licznik jak i opone.
+8. Wyświetl numery zamówień, imiona i nazwiska klientów, którzy kupili licznik, ale nie kupili opony.
