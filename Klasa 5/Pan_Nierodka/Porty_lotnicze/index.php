@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <title>Document</title>
 </head>
 <body>
@@ -26,12 +27,31 @@
     echo '</select>';
 
     mysqli_close($conn);
+
     ?>
 
      <br>
      <input type="reset" value="Wyczyść">;
      <input type="submit" value="Zarezerwuj">;
+     <br>
 
+    <div class="center-table">
+     <?php
 
+$conn = mysqli_connect('localhost','root','','porty_lotnicze') or die("Błąd z połączeniem");
+$query = "SELECT DISTINCT odloty.miasto FROM odloty";
+$result = mysqli_query($conn, $query);
+echo "<table>";
+echo "<tr><th>Miasto</th></tr>"; 
+
+while ($row = mysqli_fetch_assoc($result)) {
+    echo "<tr><td>" . $row['miasto'] . "</td></tr>";
+}
+
+echo "</table>";
+
+mysqli_close($conn);
+?>
+</div>
 </body>
 </html>
